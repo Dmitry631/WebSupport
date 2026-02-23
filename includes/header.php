@@ -11,3 +11,5 @@
     <header>
         <h1>Technology news</h1>
     </header>
+    <div class="main-layout">
+        <main>
