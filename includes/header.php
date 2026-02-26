@@ -10,6 +10,7 @@
 <body>
     <header>
         <h1>Technology news</h1>
+        <h2>WebSupport</h2>
     </header>
     <div class="main-layout">
         <main>
