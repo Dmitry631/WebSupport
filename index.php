@@ -1,7 +1,7 @@
-<?php include 'includes/header.php'; ?>
+<?php include 'layout/header.php'; ?>
 
 <h2>Welcome</h2>
 <p>General page</p>
 
-<?php include 'includes/sidebar.php'; ?>
-<?php include 'includes/footer.php'; ?>
+<?php include 'layout/sidebar.php'; ?>
+<?php include 'layout/footer.php'; ?>
