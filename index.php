@@ -1,7 +1,16 @@
-<?php include 'layout/header.php'; ?>
+<?php
+$action = isset($_GET['action']) ? $_GET['action'] : 'main';
+$file = 'views/' . $action . '.php';
 
-<h2>Welcome</h2>
-<p>General page</p>
+if (file_exists($file) && $action !== 'index') {
+    $page = $file;
+} else {
+    $page = 'views/main.php';
+}
 
-<?php include 'layout/sidebar.php'; ?>
-<?php include 'layout/footer.php'; ?>
+include 'layout/header.php';
+
+include $page;
+
+include 'layout/sidebar.php';
+include 'layout/footer.php';
