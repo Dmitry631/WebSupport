@@ -1,10 +1,8 @@
-<?php include '../layout/header.php'; ?>
-
 <h2>Latest news</h2>
 
 <div class="news-item">
     <div class="news-preview">
-        <img src="../img/news3.jpg" alt="S26 Ultra">
+        <img src="/img/news3.jpg" alt="S26 Ultra">
     </div>
 
     <div class="news-text">
@@ -17,7 +15,7 @@
 
 <div class="news-item">
     <div class="news-preview">
-        <img src="../img/news1.jpg" alt="Iphone 17e">
+        <img src="/img/news1.jpg" alt="Iphone 17e">
     </div>
 
     <div class="news-text">
@@ -30,7 +28,7 @@
 
 <div class="news-item">
     <div class="news-preview">
-        <img src="../img/news2.jpg" alt="MacBook Neo">
+        <img src="/img/news2.jpg" alt="MacBook Neo">
     </div>
 
     <div class="news-text">
@@ -39,6 +37,3 @@
         <span class="date"> March 04, 2026</span>
     </div>
 </div>
-
-<?php include '../layout/sidebar.php'; ?>
-<?php include '../layout/footer.php'; ?>
