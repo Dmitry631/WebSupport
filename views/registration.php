@@ -1,0 +1,63 @@
+<?php
+$errors = [];
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $login = $_POST["login"];
+    $password = $_POST["password"];
+    $repassword = $_POST["repassword"];
+    $email = $_POST["email"];
+
+    if (!preg_match("/^[a-zA-Zа-яА-ЯіІїЇєЄ0-9_-]{4,20}$/", $login)) {
+        $errors["login"] = "Login length must be minimum 4 character without spec symbols";
+    }
+
+    if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z]).{7,}$/", $password)) {
+        $errors["password"] = "Password must contain at least one number, one alphabet, and be at least 8 characters long";
+    }
+
+    if ($password !== $repassword) {
+        $errors["repassword"] = "Password !== repassword";
+    }
+
+    if (!preg_match("/(^[\w\-\.]+)@([\w-]{3,}+\.)([\w-]{2,})(\.[\w-]{2,})?$/", $email)) {
+        $errors["email"] = "Incorrect email";
+    }
+
+    if (empty($errors)) {
+        $_SESSION["user"] = $login;
+        header("Location: index.php?action=registration_successful");
+        exit();
+    }
+}
+
+?>
+
+
+<main class=registration-page>
+    <div class="registration-field">
+        <div class="registration-form">
+            <h2>Registration Form</h2>
+            <form method="POST">
+                <label for="login">Login:</label>
+                <input type="text" id="login" name="login" value="<?= $_POST['login'] ?? '' ?>" required />
+                <?php if (isset($errors["login"])) echo "<p class='error'>{$errors["login"]}</p>"; ?>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="<?= $_POST['email'] ?? '' ?>" required />
+                <?php if (isset($errors["email"])) echo "<p class='error'>{$errors["email"]}</p>"; ?>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required />
+                <?php if (isset($errors["password"])) echo "<p class='error'>{$errors["password"]}</p>"; ?>
+
+                <label for="repassword">Re-type Password:</label>
+                <input type="password" id="repassword" name="repassword" required />
+                <?php if (isset($errors["repassword"])) echo "<p class='error'>{$errors["repassword"]}</p>"; ?>
+
+                <button type="submit">
+                    register
+                </button>
+            </form>
+        </div>
+    </div>
+</main>
