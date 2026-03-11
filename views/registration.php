@@ -6,8 +6,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
     $repassword = $_POST["repassword"];
     $email = $_POST["email"];
+    $user_site = $_POST["user-site"] ?? '';
 
-    if (!preg_match("/^[a-zA-Zа-яА-ЯіІїЇєЄ0-9_-]{4,20}$/", $login)) {
+    if (!preg_match("/^[a-zA-Zа-яА-ЯіІїЇєЄ0-9_-]{4,20}$/u", $login)) {
         $errors["login"] = "Login length must be minimum 4 character without spec symbols";
     }
 
@@ -21,6 +22,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!preg_match("/(^[\w\-\.]+)@([\w-]{3,}+\.)([\w-]{2,})(\.[\w-]{2,})?$/", $email)) {
         $errors["email"] = "Incorrect email";
+    }
+
+    if ($user_site !== "" && !preg_match("/^https?:\/\/(www\.)?[\w\-]+\.[a-zA-Z]{2,}([\/?=&\w\-.]*)$/", $user_site)) {
+        $errors["user-site"] = "Incorrect site name. Name must be like: http://example.com, https://www.example.com";
     }
 
     if (empty($errors)) {
@@ -43,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <?php if (isset($errors["login"])) echo "<p class='error'>{$errors["login"]}</p>"; ?>
 
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="<?= $_POST['email'] ?? '' ?>" required />
+                <input type="email" id="email" name="email" value="<?= $_POST["email"] ?? '' ?>" required />
                 <?php if (isset($errors["email"])) echo "<p class='error'>{$errors["email"]}</p>"; ?>
 
                 <label for="password">Password:</label>
@@ -53,6 +58,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="repassword">Re-type Password:</label>
                 <input type="password" id="repassword" name="repassword" required />
                 <?php if (isset($errors["repassword"])) echo "<p class='error'>{$errors["repassword"]}</p>"; ?>
+
+                <label for="user-site">My web-cite:</label>
+                <input type="text" id="user-site" name="user-site" maxlength="255" value="<?= $_POST["user-site"] ?? '' ?>" />
+                <?php if (isset($errors["user-site"])) echo "<p class='error'>{$errors["user-site"]}</p>"; ?>
 
                 <button type="submit">
                     register
