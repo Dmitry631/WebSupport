@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors["repassword"] = "Password !== repassword";
     }
 
-    if (!preg_match("/(^[\w\-\.]+)@([\w-]{3,}+\.)([\w-]{2,})(\.[\w-]{2,})?$/", $email)) {
+    if (!preg_match("/(^[[:alnum:]\.]+)@([\w-]{3,}+\.)([\w-]{2,})(\.[\w-]{2,})?$/", $email)) {
         $errors["email"] = "Incorrect email";
     }
 
