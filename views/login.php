@@ -35,6 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($isVerify) {
                 $_SESSION["user_id"] = $user["id"];
                 $_SESSION["login"] = $user["login"];
+                $_SESSION["email"] = $user["email"];
                 $_SESSION["admin"] = $user["admin"];
 
                 header("Location: index.php?action=profile");
