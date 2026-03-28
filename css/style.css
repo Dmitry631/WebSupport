@@ -5,6 +5,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     box-sizing: border-box;
+    scrollbar-width: 0;
 }
 
 header {
@@ -93,7 +94,6 @@ aside a {
     display: block;
     width: 180px;
     height: 120px;
-    /* object-fit: cover; */
     border-radius: 8px;
 }
 

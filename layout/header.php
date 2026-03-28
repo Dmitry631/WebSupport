@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>News Portal</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="./css/style.css?v=123">
 </head>
 
 <body>

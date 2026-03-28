@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 
-<main class=registration-page>
+<div class="registration-page">
     <div class="registration-field">
         <div class="registration-form">
             <h2>Registration Form</h2>
