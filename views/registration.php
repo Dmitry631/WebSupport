@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("ssss", $login, $email, $pswd_hash, $user_site);
 
         if ($stmt->execute()) {
-            $_SESSION["user"] = $login;
+            $_SESSION["login"] = $login;
 
             header("Location: index.php?action=registration_successful");
             exit();
@@ -91,4 +91,4 @@ $db->close();
             </form>
         </div>
     </div>
-    </main>
+</div>

@@ -116,14 +116,17 @@ aside a {
 }
 
 
-.registration-page {
+.registration-page,
+.login-page {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10vh;
 }
 
-.registration-field {
+
+.registration-field,
+.login-field {
     display: flex;
     padding: 25px 10px;
     width: 75vh;
@@ -134,7 +137,8 @@ aside a {
     /* border-color: red; */
 }
 
-.registration-form {
+.registration-form,
+.login-form {
     background-color: hsl(0, 0%, 0%);
     border-radius: 40px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
