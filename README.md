@@ -10,4 +10,6 @@ __Lb 3:__ registration form with regex
 
 __Lb 4:__ connect MySql - add user to db
 
+__Lb 5:__ admin status in db, logIN | logOUT, user info in $_SESSION, profile 
+
     
