@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] = "POST") {
     if (isset($_SESSION["admin"]))
         $admin = $_SESSION["admin"];
 }
-
+$db->close();
 ?>
 <h2>Hello: <?php echo $login ?></h2>
 <p><br>Email: <?php echo $email ?></p>
@@ -24,6 +24,12 @@ if ($_SERVER["REQUEST_METHOD"] = "POST") {
 <a href="index.php?action=create_post">
     <button class="add-news-btn">
         Create news
+    </button>
+</a>
+
+<a href="index.php?action=user_posts">
+    <button class="show-user-news-btn">
+        My news
     </button>
 </a>
 

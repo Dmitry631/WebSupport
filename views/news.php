@@ -5,7 +5,11 @@ $db = new mysqli("localhost", "root", "", "newsportal");
 if ($db->connect_error) {
     die("db connection error: " . $db->connect_error);
 }
-$stmt = $db->prepare("SELECT title, description, category, photo, date FROM news WHERE visible = 1 ORDER BY date DESC");
+if ($_SESSION["admin"])
+    $stmt = $db->prepare("SELECT title, description, category, photo, date FROM news ORDER BY date DESC");
+else
+    $stmt = $db->prepare("SELECT title, description, category, photo, date FROM news WHERE visible = 1 ORDER BY date DESC");
+
 $stmt->execute();
 
 $result = $stmt->get_result();
