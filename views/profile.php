@@ -5,15 +5,14 @@ if ($db->connect_error) {
     die("db connection error: " . $db->connect_error);
 }
 
-if ($_SERVER["REQUEST_METHOD"] = "POST") {
-    $login = $_SESSION["login"];
-    $email = $_SESSION["email"];
-    $user_id = $_SESSION["user_id"];
-    $admin = "";
+$login = $_SESSION["login"];
+$email = $_SESSION["email"];
+$user_id = $_SESSION["user_id"];
+$admin = "";
 
-    if (isset($_SESSION["admin"]))
-        $admin = $_SESSION["admin"];
-}
+if (isset($_SESSION["admin"]))
+    $admin = $_SESSION["admin"];
+
 $db->close();
 ?>
 <h2>Hello: <?php echo $login ?></h2>
@@ -34,6 +33,8 @@ $db->close();
 </a>
 
 <?php
-if ($admin)
+if ($admin) {
     echo "\nyou are admin, status: " . $admin;
+    echo "<a href=\"index.php?action=admin_posts_panel\"><button class=\"show-user-news-btn\">Posts panel</button></a>";
+}
 ?>
