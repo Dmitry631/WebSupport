@@ -202,3 +202,58 @@ button[type="submit"] {
     margin-top: 3px;
     margin-bottom: 10px;
 }
+
+.add-news-form-columns {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    border: 2px solid black;
+    border-radius: 4px;
+    padding: 10px;
+    background-color: #096c8d24;
+    box-shadow: 1px 4px 6px 1px rgba(0, 0, 0, 0.1);
+}
+
+.add-news-left {
+    flex: 2;
+    border-right: 1px solid rgba(0, 0, 0, 0.582);
+}
+
+.add-news-right {
+    flex: 1;
+}
+
+.add-news-form input[name="title"] {
+    width: 60%;
+}
+
+.add-news-form select {
+    width: 30%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+.add-news-form textarea {
+    height: 100px;
+    width: 600px;
+    resize: none;
+}
+
+.add-news-form input,
+.add-news-form textarea,
+.add-news-form select {
+    display: block;
+}
+
+.add-news-form button {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}

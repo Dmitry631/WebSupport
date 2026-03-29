@@ -34,8 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($errors)) {
-        $_SESSION["user"] = $login;
-
         $pswd_hash = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $db->prepare(
             "INSERT INTO users (login, email, password, user_site)
@@ -44,7 +42,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("ssss", $login, $email, $pswd_hash, $user_site);
 
         if ($stmt->execute()) {
+            $_SESSION["user_id"] = $stmt->insert_id;
             $_SESSION["login"] = $login;
+            $_SESSION["email"] = $email;
 
             header("Location: index.php?action=registration_successful");
             exit();
