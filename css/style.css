@@ -67,6 +67,7 @@ aside a {
 
 .news-item {
     display: flex;
+    position: relative;
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: flex-start;
@@ -104,7 +105,7 @@ aside a {
     color: #2c3e50;
 }
 
-.date {
+.news-date {
     display: block;
     margin-top: 12px;
     padding-left: 10px;
@@ -112,6 +113,23 @@ aside a {
     font-size: 0.8rem;
     color: #64748b;
     text-transform: uppercase;
+    font-family: 'Courier New', monospace;
+}
+
+.news-category {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    padding: 2px;
+
+    border-left: 1px solid #000000;
+    border-radius: 4px;
+    border-bottom: 1px solid black;
+
+    text-align: left;
+    font-size: 1rem;
+    color: rgb(124, 124, 124);
     font-family: 'Courier New', monospace;
 }
 
