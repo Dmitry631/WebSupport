@@ -65,6 +65,12 @@ aside a {
     font-weight: bolder;
 }
 
+.news-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 .news-item {
     display: flex;
     position: relative;
@@ -256,4 +262,30 @@ button[type="submit"] {
     color: white;
     cursor: pointer;
     margin-top: 10px;
+}
+
+
+.CRUD-buttons-block {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 50px;
+}
+
+.CRUD-buttons-block button {
+    height: 50px;
+    width: 100px;
+    background-color: #1eb8fa;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.CRUD-buttons-block button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-color: #38bdf8;
 }

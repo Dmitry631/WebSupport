@@ -6,32 +6,38 @@ if ($db->connect_error) {
     die("db connection error: " . $db->connect_error);
 }
 if ($_SESSION["admin"])
-    $stmt = $db->prepare("SELECT title, description, category, photo, date FROM news ORDER BY date DESC");
+    $stmt = $db->prepare("SELECT id_news, title, description, category, photo, date FROM news ORDER BY date DESC");
 else
-    $stmt = $db->prepare("SELECT title, description, category, photo, date FROM news WHERE visible = 1 ORDER BY date DESC");
+    $stmt = $db->prepare("SELECT id_news, title, description, category, photo, date FROM news WHERE visible = 1 ORDER BY date DESC");
 
 $stmt->execute();
 
 $result = $stmt->get_result();
 
-while ($news = $result->fetch_assoc()) {
-    echo '<div class="news-item">';
-
-    echo '<div class="news-preview">';
-    echo '<img src="./img/' . $news["photo"] . '" alt="News image">';
-    echo '</div>';
-
-    echo '<span class="news-category">' . htmlspecialchars($news["category"]) . '</span>';
-
-    echo '<div class="news-text">';
-    echo '<h3>' . htmlspecialchars($news["title"]) . '</h3>';
-    echo '<p>' . htmlspecialchars($news["description"]) . '</p>';
-    echo '<span class="news-date">' . $news["date"] . '</span>';
-    echo '</div>';
-
-    echo '</div>';
-}
 ?>
+
+<?php while ($news = $result->fetch_assoc()): ?>
+    <a href="index.php?action=view_news&id=<?= $news["id_news"] ?>" class="news-link">
+        <div class="news-item">
+            <div class="news-preview">
+                <img src="./img/<?= htmlspecialchars($news["photo"]) ?>" alt="News image">
+            </div>
+            <span class="news-category">
+                <?= htmlspecialchars($news["category"]) ?>
+            </span>
+            <div class="news-text">
+                <h3><?= htmlspecialchars($news["title"]) ?></h3>
+                <p>
+                    <?= htmlspecialchars(mb_strimwidth($news["description"], 0, 100, "...")) ?>
+                </p>
+                <span class="news-date">
+                    <?= $news["date"] ?>
+                </span>
+            </div>
+        </div>
+    </a>
+<?php endwhile; ?>
+
 
 <div class="news-item">
     <div class="news-preview">

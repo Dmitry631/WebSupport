@@ -15,26 +15,36 @@ if (isset($_SESSION["admin"]))
 
 $db->close();
 ?>
-<h2>Hello: <?php echo $login ?></h2>
-<p><br>Email: <?php echo $email ?></p>
-<!-- TEMP ID -->
-<p><br>ID: <?php echo $user_id ?></p>
 
-<a href="index.php?action=create_post">
-    <button class="add-news-btn">
-        Create news
-    </button>
-</a>
+<div class="user-info-block">
+    <h2>Hello: <?php echo $login ?></h2>
+    <p><br>Email: <?php echo $email ?></p>
+    <!-- TEMP ID -->
+    <p><br>ID: <?php echo $user_id ?></p>
 
-<a href="index.php?action=user_posts">
-    <button class="show-user-news-btn">
-        My news
-    </button>
-</a>
+    <?php if ($admin)
+        echo "You are admin.";
+    ?>
+</div>
 
-<?php
-if ($admin) {
-    echo "\nyou are admin, status: " . $admin;
-    echo "<a href=\"index.php?action=admin_posts_panel\"><button class=\"show-user-news-btn\">Posts panel</button></a>";
-}
-?>
+<div class="CRUD-buttons-block">
+    <a href=" index.php?action=create_post">
+        <button class="add-news-btn">
+            Create news
+        </button>
+    </a>
+
+    <a href="index.php?action=user_posts">
+        <button class="show-user-news-btn">
+            My news
+        </button>
+    </a>
+
+
+    <?php
+    if ($admin) {
+        echo "<a href=\"index.php?action=admin_posts_panel\"><button class=\"show-user-news-btn\">Posts panel</button></a>";
+    }
+    ?>
+
+</div>
