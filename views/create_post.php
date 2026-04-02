@@ -27,12 +27,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($errors)) {
         $author_id = $_SESSION["user_id"];
 
+        if ($_SESSION["admin"] == 1)
+            $visible = 1;
+        else
+            $visible = 0;
+
         $stmt = $db->prepare("
-            INSERT INTO news (author_id, category, title, description)
-            VALUES (?, ?, ?, ?)
+            INSERT INTO news (author_id, category, title, description, visible)
+            VALUES (?, ?, ?, ?, ?)
         ");
 
-        $stmt->bind_param("isss", $author_id, $category, $title, $description);
+        $stmt->bind_param("isssi", $author_id, $category, $title, $description, $visible);
 
         if ($stmt->execute()) {
             header("Location: index.php?action=news");
